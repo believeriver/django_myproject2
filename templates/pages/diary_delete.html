@@ -1,0 +1,12 @@
+{% extends 'base_diary.html' %}
+
+{% block main_content %}
+<div class="container">
+    <p>削除してもよろしいですか？　</p>
+    <form action='' method="POST">{% csrf_token %}
+        <input type="submit" value="削除します" class="alert alert-danger" role="alert">
+    </form>
+    <br>
+    <a href="{% url 'blog:diary_index' %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">戻る</a>
+</div>
+{% endblock main_content %}

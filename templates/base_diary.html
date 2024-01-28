@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<style type="text/css"><!--
+/*ここに調整CSS記述*/-->
+.jumbotron { background:url({% static 'images/home-img3.jpg' %})
+             center no-repeat;
+             background-size: cover;
+             }
+</style>
+{% endblock customcss %}
+
+{% block header %}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">My Diary</h1>
+      <p class="lead">私の日記帳です。英語日記も書きたいと思います。</p>
+    </div>
+  </div>
+{% endblock header %}
+

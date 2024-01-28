@@ -1,0 +1,70 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+<div class="card mb-3">
+    <h2 class="card-header bg-dark text-white">{{ post.title }}</h2>
+    <div class="card-body">
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">登録日</th>
+            <td>：{{ post.created_at|date:"Y/m/d H:i"}}</td>
+          </tr>
+          <tr>
+            <th scope="row">カテゴリ</th>
+            <td>：{{ post.category }}</td>
+          </tr>
+          {% if user.is_superuser %}
+          <tr>
+            <th scope="row">閲覧数</th>
+            <td>：{{ post.views }}</td>
+          </tr>
+          <tr>
+            {% if post.status == 1 %}
+            <th scope="row">状態</th>
+            <td class="alert alert-danger" role="alert">：非公開</td>
+            {% endif %}
+          </tr>
+          {% endif %}
+          <tr>
+            <th scope="row"><a class="btn btn-primary" href="{% url 'blog:liked' post.pk%}">いいね</a></th>
+            <td>：{{ post.liked }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      {{ post.text | linebreaksbr | urlize}}
+      <br>
+    </div>
+    {% if  post.codememo != '' %}
+    <pre><code>{{ post.codememo | linebreaksbr | urlize}}</code></pre>
+    {% endif %}
+</div>
+
+{% for comment in post.comment_set.all %}
+<p>
+  {{ comment.name}}<br>
+  {{ comment.text | linebreaksbr }}
+</p>
+{% endfor %}
+
+{% comment %} <a class="btn btn-dark" href="{% url 'blog:comment' post.pk %}">コメント投稿ページへ</a> {% endcomment %}
+<div class="btn-toolbar">
+  <div class="btn-group">
+    {% if user.is_superuser %}
+    <a class="btn btn-success" href="{% url 'blog:update' post.pk%}">編集する</a>
+      {% if post.status == 1 %}
+      <a class="btn btn-danger" href="{% url 'blog:status_open' post.pk%}">公開する</a>
+      {% else %}
+      <a class="btn btn-warning" href="{% url 'blog:status_hidden' post.pk%}">非公開にする</a>
+      {% endif %}
+    {% endif %}
+    <a class="btn btn-dark" href="{% url 'blog:index' %}">戻る</a>
+  </div>
+  {% if user.is_superuser %}
+  <div class="btn-group ml-auto">
+    <a class="btn btn-danger" href="{% url 'blog:delete' post.pk%}">削除する</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}

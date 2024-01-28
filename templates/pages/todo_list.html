@@ -1,0 +1,63 @@
+{% extends 'base_todo.html' %}
+
+{% block main_content %}
+<div class="container btn-toolbar">
+  <div class="btn-group">
+    <form>
+      <a href="{% url 'blog:todo_create' %}" class="btn btn-success">新規作成</a>
+    </form>
+  </div>
+  <div class="btn-group ml-auto">
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'blog:todo_list' %}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+<br>
+<div class="container">
+    {% comment %} <a href="{% url 'blog:todo_create' %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">新規作成</a>
+    <br><br> {% endcomment %}
+  <table class="table table-sm">
+    <thead class="thead-white">
+      <tr>
+        <th scope="col" style="width: 5%">#button</th>
+        {% comment %} <th scope="col" style="width: 10%">regist</th> {% endcomment %}
+        <th scope="col" style="width: 15%">due date</th>
+        <th scope="col" style="width: 15%">status</th>
+        <th scope="col" style="width: 65%">title</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in object_list %}
+      {% if item.priority == 'secondary' %}
+      <tr scope="row" class="alert alert-dark" role="alert">
+      {% elif item.priority == 'danger'%}
+      <tr scope="row" class="alert alert-{{ item.priority }}" role="alert">
+      {% else %}
+      <tr scope="row" class="alert" role="alert">
+      {% endif %}
+        <th>
+          <a href="{% url 'blog:todo_detail' item.pk %}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">詳細</a>
+          {% comment %} <a href="{% url 'blog:todo_update' item.pk %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">編集</a>
+          <a href="{% url 'blog:todo_delete' item.pk %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">削除</a> {% endcomment %}
+        </th>
+        {% comment %} <td>{{ item.created_at|date:"Y/m/d"}}</td> {% endcomment %}
+        <td>{{ item.duedate|date:"Y/m/d"}}</td>
+        <td>
+          {% if item.priority == 'secondary'%}
+          Close
+          {% elif item.priority == 'danger'%}
+          High
+          {% else %}
+          Normal
+          {%endif%}
+        </td>
+        <td>{{ item.title| truncatechars:25 }}</td>
+      </tr>
+      {% endfor%}
+    </tbody>
+  </table>
+  {% include 'pages/page.html' %}
+</div>
+{% endblock main_content %}

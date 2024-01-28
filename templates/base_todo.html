@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<style type="text/css"><!--
+/*ここに調整CSS記述*/-->
+.jumbotron { background:url({% static 'images/home-img3.jpg' %})
+             center no-repeat;
+             background-size: cover;
+             }
+</style>
+{% endblock customcss %}
+
+{% block header %}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Todolist</h1>
+      <p class="lead">Todolistを作って毎日を効率的に過ごしましょう</p>
+    </div>
+  </div>
+{% endblock header %}
+

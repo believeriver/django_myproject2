@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<!-- For Markdown -->
+  <link rel="stylesheet" href="{% static 'css/monokai.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <!--  <script id="MathJax-script" async src="{% static 'scripts/tex-mml-chtml.js' %}"></script>-->
+
+  <style type="text/css">
+  .jumbotron { background:url({% static 'images/home-img2.jpg' %})
+               center no-repeat;
+               background-size: cover;
+               }
+  </style>
+{% endblock customcss %}
+
+{% block header %}
+  <div class="jumbotron ">
+    <h1 class="display-4 text-primary">KnowHow</h1>
+    <p class="lead text-light">
+      技術的なメモを中心にまとめます。<br>
+      検索にて調べることができます。
+    </p>
+  </div>
+{% endblock header %}
+
+{% block main_content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        {% block content %}
+        {% endblock content %}
+      </div>
+      <div class="col-md-3">
+        <ul class="list-group">
+          <li class="list-group-item bg-dark text-white">カテゴリ一覧</li>
+          {% for category in categories %}
+            <li class="list-group-item">
+              <a href="{% url 'blog:category_mark' category.pk %}" class="text-dark">{{ category.name }}({{ category.count }})</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock main_content%}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">My Diary</h1>
+      <p class="lead">私の日記帳です。英語日記も書きたいと思います。</p>
+    </div>
+  </div>
+{% endblock header %}
+
+{% block main_content %}
+<div class="container">
+  <form action="" method="POST">{% csrf_token %}
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">日付</label><br>
+      {{ form.diary_date }}
+  </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">タイトル</label><br>
+      <input type="text" class="form-control" id="exampleFormControlInput1" name='title' value='{{object.title}}'>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">日記</label><br>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" name='jp_text'>{{ object.jp_text}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">日記（英語）</label><br>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" name='en_text' >{{ object.en_text }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1" disabled>作成日</label><br>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name='created_at' disabled>{{ object.created_at }}</textarea>
+    </div>
+    <input type="submit" value="更新する" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">
+    <a href="{% url 'blog:diary_index' %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">戻る</a>
+  </form>
+</div>
+{% endblock main_content %}

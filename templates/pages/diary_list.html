@@ -1,0 +1,42 @@
+{% extends 'base_diary.html' %}
+
+
+{% block main_content %}
+<div class="container btn-toolbar">
+  <div class="btn-group">
+    <form>
+      <a href="{% url 'blog:diary_create' %}" class="btn btn-success">新規作成</a>
+    </form>
+  </div>
+  <div class="btn-group ml-auto">
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'blog:diary_index' %}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+<div class="container">
+  <br>
+  <table class="table table-sm ">
+    <thead class="thead-white">
+      <tr>
+        <th scope="col" style="width: 20%">#button</th>
+        {% comment %} <th scope="col" style="width: 10%">regist</th> {% endcomment %}
+        <th scope="col" style="width: 20%">date</th>
+        <th scope="col" style="width: 60%">title</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in object_list %}
+      <tr>
+        <th scope="row"><a href="{% url 'blog:diary_detail' item.pk %}" class="btn btn-dark">詳細</a></th>
+        <td>{{ item.diary_date |date:"Y/m/d"}}</td>
+        <td>{{ item.title| truncatechars:30 }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% include 'pages/page.html' %}
+</div>
+
+{% endblock main_content %}

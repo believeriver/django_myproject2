@@ -1,0 +1,9 @@
+secrets
+db.sqlite3
+config/settings.py
+config/__pycache__
+blog/__pycache__
+blog/models/__pycache__
+blog/views/__pycache__
+blog/migrations
+

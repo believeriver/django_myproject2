@@ -1,0 +1,34 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+<div class="container">
+    <form action="" method="POST">{% csrf_token %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+            <div class="form-group">
+              <label for="exampleFormControlInput1">タイトル</label><br>
+              <input type="text" class="form-control" id="exampleFormControlInput1" name='title' placeholder='入力必須です'>
+              {% comment %} {{ form.title }} {% endcomment %}
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">本文</label><br>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name='text' placeholder="入力必須です"></textarea>
+              {% comment %} {{ form.text }} {% endcomment %}
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">サンプルコード</label><br>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name='codememo'></textarea>
+              {% comment %} {{ form.codememo }} {% endcomment %}
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">作成日</label><br>
+                {{ form.created_at}}
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">カテゴリ</label><br>
+                {{ form.category }}
+            </div>
+        <input type="submit" value="作成する" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">
+        <a href="{% url 'blog:index' %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">戻る</a>
+    </form>
+    </div>
+{% endblock content %}

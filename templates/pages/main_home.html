@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+{% endblock customcss %}
+
+
+{% block header %}
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="first-slide opacity-50" src="{% static 'images/header_image1.jpg' %}" alt="First slide">
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>Growing</h1>
+            <p>
+                "You want to know the difference between a master and a beginner ?<br>
+                The master has failed more times than the beginner has ever tried."<br>
+                 - Master Yoda.
+            </p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'blog:index_mark'%}" role="button">Go to KnowHow</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="second-slide" src="{% static 'images/header_image2.jpg' %}" alt="Second slide">
+        <div class="container">
+          <div class="carousel-caption text-info">
+            <h1>Improve</h1>
+            <p>
+                “If you can’t fly, then run, if you can’t run, then walk, if you can’t walk, then crawl, <br>
+                but whatever you do, you have to keep moving forward.”
+                 - Martin Luther King Jr.
+            </p>
+            <p><a class="btn btn-lg btn-info" href="https://qiita.com/believeriver/items/2204394cead531f6881c" role="button" target="_blank">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="third-slide opacity-50" src="{% static 'images/header_image3.jpg' %}" alt="Third slide">
+        <div class="container">
+          <div class="carousel-caption text-right text-warning">
+            <h1>Stock Market</h1>
+            <p>
+                Markets can remain irrational longer than you can remain solvent.<br>
+                Nobody rings a bell at the market bottom.<br>
+                Past performance does not guarantee future results.<br>
+            </p>
+            <p><a class="btn btn-lg btn-warning" href="http://nonoco.believeriver.site:8501/" role="button" target="_blank">Japanese Stocks</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+{% endblock header %}
+
+{% block main_content %}
+<div class="container">
+    <h3>更新履歴</h3>
+    <table class="table table-sm ">
+        <tbody>
+            <tr>
+              <th scope="row"><span class="badge badge-danger">New</span></th>
+              <td>2024/01/15</td>
+              <td>Bootstrapのサンプルを用いてデザインの見直しを実施</td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td>2023/05/07</td>
+              <td>管理者用の機能アップデート実施</td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td>2023/04/04</td>
+              <td>ホームのカバーページを作成しました</td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td>2023/04/02</td>
+              <td>ポートフォリオページへのリンク画面を調整しました。</td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td>2023/04/01</td>
+              <td>データベースをテスト用のSQLiteから本番環境のPostgresに移行しました。</td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td>2023/03/29</td>
+                <td>いいねボタンを実装しました。</td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td>2023/03/26</td>
+                <td>ホーム画面を作り、私の他のブログへのリンクを追加しました。</td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td>2023/03/26</td>
+                <td>BootstrapとDjangoを使ってページを作成しました。</td>
+            </tr>
+
+        </tbody>
+      </table>
+
+    <br>
+
+    <!-- Marketing messaging and featurettes
+      ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <!-- Three columns of text below the carousel -->
+    <div class="marketing">
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img1.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>KnowHow</h2>
+            <p>技術ノウハウのメモ一覧</p>
+            <p><a class="btn btn-secondary" href="{% url 'blog:index_mark'%}" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img2.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>My Qiita</h2>
+            <p>私のQiita投稿</p>
+            <p><a class="btn btn-secondary" href="https://qiita.com/believeriver/items/2204394cead531f6881c" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Reading</h2>
+            <p>読書</p>
+            <p><a class="btn btn-secondary" href="https://beginblog-yukisan.com/" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/header_image3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>IR</h2>
+            <p>日本高配当株情報</p>
+            <p><a class="btn btn-secondary" href="http://nonoco.believeriver.site:8501/" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+
+        {% if user.is_superuser %}
+        <h3></h3>
+        <div class="row bg-light py-5">
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img2.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>To Do</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>私のやることリスト</p>
+            <p><a class="btn btn-secondary" href="{% url 'blog:todo_list' %}" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>My Diary</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>日記</p>
+            <p><a class="btn btn-secondary" href="{% url 'blog:diary_index' %}" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/header_image3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>IR</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>日本高配当株情報(streamlit Sharing)</p>
+            <p><a class="btn btn-secondary" href="https://jpstockirapp-fwybv8zvbupbzosmpumdrb.streamlit.app/" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Git Hub</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>Git Hub</p>
+            <p><a class="btn btn-secondary" href="https://github.com/believeriver" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Conoha 管理画面</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>Web公開サーバ</p>
+            <p><a class="btn btn-secondary" href="https://manage.conoha.jp/Wing/Server" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Stripe 管理画面</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>決済システム管理画面</p>
+            <p><a class="btn btn-secondary" href="https://dashboard.stripe.com/test/apikeys" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>RISSA</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>情報処理安全確保支援士マイページ</p>
+            <p><a class="btn btn-secondary" href="https://riss.ipa.go.jp/riss/portal" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>IPA試験</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>情報技術者試験マイページ</p>
+            <p><a class="btn btn-secondary" href="https://itee.ipa.go.jp/ipa/user/public/?token=a3a857daca4f7dccf72bd7e74c7e2294899c49cbd4ee962ebb4042581f544e02" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+            <h2>ChatGPT3.5</h2>
+            <span class="badge badge-danger">管理者用</span>
+            <p>ウインストン</p>
+            <p><a class="btn btn-secondary" href="https://chat.openai.com/c/c4625043-0906-4ddd-a3da-ca025d75ef63" role="button" target="_blank">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+        {% endif %}
+    </div>
+
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">KnowHow<span class="text-muted">Tips</span></h2>
+        <p class="lead">
+            プログラミング(特にPython関係),Linux,サーバ構築、ネットワークなど,
+            私が興味を持って勉強している内容で技術的なメモを纏めています。
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img class="featurette-image img-fluid " data-src="holder.js/500x500/auto" src="{% static 'images/home-img1.jpg' %}" alt="Generic placeholder image" style="width: 500px; height: 300px">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Quita <span class="text-muted">SLURM</span></h2>
+        <p class="lead">
+            Quitaにもいくつか技術メモをまとめています。
+            SLURMという並列計算機のジョブスケジューラ環境構築についてまとめました。
+        </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" src="{% static 'images/home-img2.jpg' %}" alt="Generic placeholder image" style="width: 500px; height: 300px">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Hobby <span class="text-muted">Reading</span></h2>
+        <p class="lead">
+            私の趣味は読書です。私の読んだ本について感想などをまとめています。
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img class="featurette-image img-fluid mx-auto" src="{% static 'images/home-img3.jpg' %}" alt="Generic placeholder image" style="width: 500px; height: 300px">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">IR <span class="text-muted">日本高配当株</span></h2>
+        <p class="lead">
+            日本高配当株のランキングと各企業の株価推移、およびIRBank情報から投資判断に必要と思われる８つの項目をピックアップします。
+            これらの情報をpythonのstreamlitで見える化しました。
+        </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="featurette-image img-fluid " data-src="holder.js/500x500/auto" src="{% static 'images/header_image3.jpg' %}" alt="Generic placeholder image" style="width: 500px; height: 300px">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+　　<!-- /END THE FEATURETTES -->
+</div>
+
+{% endblock main_content %}

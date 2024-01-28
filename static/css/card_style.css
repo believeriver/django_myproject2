@@ -1,0 +1,23 @@
+
+.card__items{
+    /* border: 2px solid #ccc; */
+    margin-bottom: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    /* text-align: center; */
+}
+
+.card__item{
+    /* width: calc(33.3% - 24px * 2 / 3); */
+    width :33.3%;
+    /* height: 100px; */
+    /* background: darkgray;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 1px;
+    text-align: center; */
+}
+
+.card__img{
+    width: 100%;
+}

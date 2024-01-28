@@ -1,0 +1,17 @@
+{% extends 'base_todo.html' %}
+
+{% block main_content %}
+  <div class='container'>
+    <div class="alert alert-success" role="alert">
+      <p>タイトル：{{ object.title }}</P>
+      <p>{{ object.memo | linebreaksbr | urlize }}</P>
+      <p>登録日：{{ object.created_at }}</P>
+      <p>期日：{{ object.duedate }}</P>
+    </div>
+    <br>
+    <a href="{% url 'blog:todo_update' object.pk %}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">編集</a>
+    <a href="{% url 'blog:todo_list' %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">戻る</a>
+    
+    <a href="{% url 'blog:todo_delete' object.pk %}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">削除</a>
+  </div>
+{% endblock main_content %}
