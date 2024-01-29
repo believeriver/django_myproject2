@@ -10,7 +10,7 @@ sys.path.append(os.path.dirname(os.path.dirname(
 from blog.models import HomePageUpdateModel
 
 
-class HomeIndexView(LoginRequiredMixin, generic.ListView):
+class HomeIndexView(generic.ListView):
     template_name = 'pages/main_home.html'
     model = HomePageUpdateModel
     paginate_by = 10
