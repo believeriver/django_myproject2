@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Post, Category, Comment, TodoModel, DiaryModel
+from .models import (
+    Post,
+    Category,
+    Comment,
+    TodoModel,
+    DiaryModel,
+    HomePageUpdateModel
+)
 from django.contrib.auth.models import Group
 
 # Register your models here.
@@ -8,4 +15,6 @@ admin.site.register(Category)
 admin.site.register(Comment)
 admin.site.register(TodoModel)
 admin.site.register(DiaryModel)
+admin.site.register(HomePageUpdateModel)
 admin.site.unregister(Group)
+

@@ -17,7 +17,6 @@ urlpatterns = [
     path('status_hidden/<int:pk>/', views.status_hidden, name='status_hidden'),
     path('comment/<int:post_pk>/', views.PostCommentView.as_view(), name='comment'),
     path('about/', views.AboutMe.as_view(), name='about'),
-    path('home/', views.HomeView.as_view(), name='home'),
     path('', views.CoverView.as_view(), name='cover'),
 ]
 
@@ -55,10 +54,16 @@ diary_urlpatterns = [
     path('diary_update/<int:pk>', views.UpdateView.as_view(), name='diary_update'),
 ]
 
+homepage_update_urlpatterns = [
+    path('home/', views.HomeIndexView.as_view(), name='home'),
+]
+
 urlpatterns += post_org_urlpatterns
 urlpatterns += post_mark_urlpatterns
 urlpatterns += todo_urlpatterns
 urlpatterns += diary_urlpatterns
+urlpatterns += homepage_update_urlpatterns
+
 
 
 

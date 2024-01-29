@@ -72,55 +72,19 @@
     <h3>更新履歴</h3>
     <table class="table table-sm ">
         <tbody>
+            {% for item in object_list %}
             <tr>
-              <th scope="row"><span class="badge badge-danger">New</span></th>
-              <td>2024/01/28</td>
-              <td>GitHubを使ってバージョン管理をすることに対応しました。</td>
+                {% if forloop.counter == 1 %}
+                    <th scope="row"><span class="badge badge-danger">New</span></th>
+                {% else %}
+                    <th scope="row"></th>
+                {% endif %}
+                <td>{{ item.updated_at|date:"Y/m/j" }}</td>
+                <td>{{ item.title }}</td>
             </tr>
-            <tr>
-              <th scope="row"></th>
-              <td>2024/01/15</td>
-              <td>Bootstrapのサンプルを用いてデザインの見直しを実施しました。</td>
-            </tr>
-            <tr>
-              <th scope="row"></th>
-              <td>2023/05/07</td>
-              <td>管理者用の機能アップデート実施しました。</td>
-            </tr>
-            <tr>
-              <th scope="row"></th>
-              <td>2023/04/04</td>
-              <td>ホームのカバーページを作成しました。</td>
-            </tr>
-            <tr>
-              <th scope="row"></th>
-              <td>2023/04/02</td>
-              <td>ポートフォリオページへのリンク画面を調整しました。</td>
-            </tr>
-            <tr>
-              <th scope="row"></th>
-              <td>2023/04/01</td>
-              <td>データベースをテスト用のSQLiteから本番環境のPostgresに移行しました。</td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td>2023/03/29</td>
-                <td>いいねボタンを実装しました。</td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td>2023/03/26</td>
-                <td>ホーム画面を作り、私の他のブログへのリンクを追加しました。</td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td>2023/03/26</td>
-                <td>BootstrapとDjangoを使ってページを作成しました。</td>
-            </tr>
-
+            {% endfor %}
         </tbody>
-      </table>
-
+    </table>
     <br>
 
     <!-- Marketing messaging and featurettes
