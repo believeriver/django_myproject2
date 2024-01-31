@@ -164,7 +164,7 @@ for markdown field.
 class PostIndexMarkView(generic.ListView):
     template_name = 'pages/post_mark_list.html'
     model = Post
-    paginate_by = 7
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = Post.objects.order_by('-created_at')

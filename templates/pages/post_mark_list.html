@@ -10,35 +10,34 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
   <br>
-  <table class="table table-sm ">
-    <thead class="thead-white">
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">登録日</th>
-        <th scope="col">カテゴリ</th>
-        <th scope="col">タイトル</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for post in post_list %}
-        {% if post.status == 2 %}
-        <tr>
-          <th scope="row"><a href="{% url 'blog:detail_mark' post.pk %}" class="btn btn-dark">詳細</a></th>
-          <td>{{ post.created_at|date:"Y/m/d H:i"}}</td>
-          <td>{{ post.category }}</td>
-          <td>{{ post.title| truncatechars:20 }}</td>
-        </tr>
-        {% elif post.status == 1 and user.is_superuser %}
-        <tr class="alert alert-success" role="alert">
-          <th scope="row"><a href="{% url 'blog:detail_mark' post.pk %}" class="btn btn-dark">詳細</a></th>
-          <td>{{ post.created_at|date:"Y/m/d H:i"}}</td>
-          <td>{{ post.category }}</td>
-          <td>{{ post.title| truncatechars:20 }}</td>
-        </tr>
-        {% endif %}
-      {% endfor %}
-    </tbody>
-  </table>
+  {% for post in post_list %}
+    {% if post.status == 2 %}
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          {{ post.created_at|date:"Y/m/d"}} : <span class="badge bg-secondary text-light">{{ post.category }}</span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{ post.content| truncatechars:30 }}</p>
+          <a href="{% url 'blog:detail_mark' post.pk %}" class="btn btn-dark" class="btn btn-dark">詳細</a>
+        </div>
+      </div>
+      <br>
+    {% elif post.status == 1 and user.is_superuser %}
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          {{ post.created_at|date:"Y/m/d"}} : <span class="badge bg-secondary text-light">{{ post.category }}</span>
+          <span class="badge bg-danger text-light">非公開</span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{ post.content| truncatechars:30 }}</p>
+          <a href="{% url 'blog:detail_mark' post.pk %}" class="btn btn-dark" class="btn btn-dark">詳細</a>
+        </div>
+      </div>
+      <br>
+    {% endif %}
+  {% endfor %}
   {% include 'pages/page.html' %}
 
 {% endblock %}
