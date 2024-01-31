@@ -5,7 +5,8 @@ from .models import (
     Comment,
     TodoModel,
     DiaryModel,
-    HomePageUpdateModel
+    HomePageUpdateModel,
+    Profile,
 )
 from django.contrib.auth.models import Group
 
@@ -16,5 +17,6 @@ admin.site.register(Comment)
 admin.site.register(TodoModel)
 admin.site.register(DiaryModel)
 admin.site.register(HomePageUpdateModel)
+admin.site.register(Profile)
 admin.site.unregister(Group)
 

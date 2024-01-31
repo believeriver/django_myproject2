@@ -13,3 +13,6 @@ class HomePageUpdateModel(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.updated_at}"
+
+
+

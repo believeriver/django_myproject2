@@ -2,6 +2,21 @@
 {% load static %}
 
 {% block customcss %}
+<!-- For Markdown -->
+  <link rel="stylesheet" href="{% static 'css/monokai.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <!--  <script id="MathJax-script" async src="{% static 'scripts/tex-mml-chtml.js' %}"></script>-->
+
 <style type="text/css">
 .jumbotron { background:url({% static 'images/home-img3.jpg' %})
              center no-repeat;
@@ -20,48 +35,16 @@
 {% endblock header %}
 
 {% block main_content %}
-<div class="container">
-  <br>
-    <div class="row">
-      <div class="col-md-9">
-        {% block content %}
-        <h2>自己紹介</h2>
-        <p>年齢：３７歳（2023年３月時点）<br>職業：会社員（１１年目）<br>
-          趣味：読書（司馬遼太郎さん、山崎豊子さんが特に好きです）、
-          プログラミングの勉強（pythonが好き）、英語など</p>
-        <h2>主な業務経験</h2>
-        <p><span class="color1">■<strong>業務内容</strong></span><br>
-            Webサーバ、Linuxサーバ（技術並列計算機）、
-            Ciscoネットワーク機器の設定や運用管理業務やITヘルプデスク対応を主な業務として行なっています。<br>
-          また、汎用工学シミュレーションソフトウェアCOMSOL Multiphysicを用いて電気化学と流体、
-            熱の連成解析によるお客様の製品開発のサポートも行なっています。</p>
-        <p><span class="color1">■<strong>業務項目</strong></span><br>
-            ・COMSOL Multiphysicを用いたCFD解析<br>
-            ・Linuxサーバ運用（技術計算機・SLURM運用サポートなど。主にCeontOS、Ubuntuなど）<br>
-            ・ciscoネットワーク機器の設定、運用サポート（L2SWまでが主。L3SWは担当外）<br>
-            ・IT関連のサポートデスク業務<br>
-            ・WindowsPC, Linuxサーバのインストールや設定作業<br>
-        </p>
-        <h2>保有資格</h2>
-          <p>私の現在保有している主な資格です。</p>
-          <ol>
-            <li>基本情報技術者試験</li>
-            <li>応用情報技術者試験</li>
-            <li>情報処理安全確保支援士(2022年10月登録）</li>
-            <li>Cisco CCNA(2021年5月更新)</li>
-            <li>ITIL Foundation version3</li>
-            <li>TOEIC 810点（2022年11月取得）</li>
-          </ol>
-        </section>
-        {% endblock content %}
-      </div>
-      <div class="col-md-3">
-        <ul class="list-group">
-          <li class="list-group-item bg-dark text-white">リンク</li>
-          <li class="list-group-item"><a href="{% url 'blog:index'%}" class="text-dark">Galleryブログ</a></li>
-          <li class="list-group-item"><a href="#" class="text-dark">Contact</a></li>
-        </ul>
-      </div>
-    </div>
+  <div class="container">
+  {% block content %}
+    {{profile.convert_bio_markdown_to_html|safe}}
+    {{profile.convert_hobby_markdown_to_html|safe}}
+    <hr>
+    {{profile.convert_work_experience_markdown_to_html|safe}}
+    <hr>
+    {{profile.convert_qualifications_markdown_to_html|safe}}
+  {% endblock content %}
   </div>
 {% endblock main_content%}
+
+
